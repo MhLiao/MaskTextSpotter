@@ -1,0 +1,40 @@
+# compilation and distribution
+__pycache__
+_ext
+*.pyc
+*.so
+maskrcnn_benchmark.egg-info/
+build/
+dist/
+
+# pytorch/python/numpy formats
+*.pth
+*.pkl
+*.npy
+
+# ipython/jupyter notebooks
+*.ipynb
+
+# Editor temporaries
+*.swn
+*.swo
+*.swp
+*~
+
+# Pycharm editor settings
+.idea
+
+# project dirs
+/datasets
+/models
+/outputs
+/vis
+*.jpg
+*.JPG
+*.JPEG
+*.zip
+*.txt
+
+evaluation
+
+
