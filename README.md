@@ -1,6 +1,6 @@
 # MaskTextSpotter
 This is the code of "Mask TextSpotter: An End-to-End Trainable Neural Network for Spotting Text with Arbitrary Shapes" (TPAMI version).
-It is an extension of the ECCV version while sharing the same title. For more details, please refer to our [arXiv paper](https://arxiv.org/abs/1908.08207) or [TPAMI paper](https://ieeexplore.ieee.org/document/8812908). 
+It is an extension of the ECCV version while sharing the same title. For more details, please refer to our [TPAMI paper](https://ieeexplore.ieee.org/document/8812908). 
 
 This repo is inherited from [maskrcnn-benchmark](https://github.com/facebookresearch/maskrcnn-benchmark) and follows the same license.
 
