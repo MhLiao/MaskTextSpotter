@@ -27,8 +27,6 @@ This repo is inherited from [maskrcnn-benchmark](https://github.com/facebookrese
 - CUDA >= 9.0
 
 
-### Option 1: Step-by-step installation
-
 ```bash
   # first, make sure that your conda is setup properly with the right environment
   # for that, check that `which conda`, `which pip` and `which python` points to the
