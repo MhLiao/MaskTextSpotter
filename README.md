@@ -6,12 +6,13 @@ This repo is inherited from [maskrcnn-benchmark](https://github.com/facebookrese
 
 ## ToDo List
 
-- [x] release code
+- [x] Release code
 - [x] Document for Installation
 - [ ] Document for training and testing
 - [ ] Trained models
 - [ ] Demo
 - [ ] Evaluation code
+- [ ] Release the standalone recognition model
 
 ## Installation
 
