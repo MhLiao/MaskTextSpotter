@@ -9,7 +9,7 @@ This repo is inherited from [maskrcnn-benchmark](https://github.com/facebookrese
 - [x] Release code
 - [x] Document for Installation
 - [x] Trained models
-- [ ] Document for testing
+- [x] Document for testing
 - [ ] Document for training
 - [ ] Demo
 - [ ] Evaluation code
@@ -75,6 +75,18 @@ This repo is inherited from [maskrcnn-benchmark](https://github.com/facebookrese
 Download Trained [model](https://drive.google.com/open?id=1pPRS7qS_K1keXjSye0kksqhvoyD0SARz)
 
 ## Testing
+### Prepar dataset
+The datasets should be placed like ```MaskTextSpotter/datasets/icdar2015/test_iamges```
+### Check the config file (configs/finetune.yaml) for some parameters.
+test dataset: ```TEST.DATASETS```; 
+
+input size: ```INPUT.MIN_SIZE_TEST''';
+
+model path: ```MODEL.WEIGHT```;
+
+output directory: ```OUTPUT_DIR```
+
+### run ```sh test.sh```
 
 
 ## Training
