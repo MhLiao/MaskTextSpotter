@@ -76,7 +76,10 @@ Download Trained [model](https://drive.google.com/open?id=1pPRS7qS_K1keXjSye0kks
 
 ## Testing
 ### Prepar dataset
-The datasets should be placed like ```MaskTextSpotter/datasets/icdar2015/test_iamges```
+The root of the dataset directory should be ```MaskTextSpotter/datasets```. The format of the dataset can be find [here](https://github.com/lvpengyuan/masktextspotter.caffe2#datasets). 
+
+An example of the path of test images: ```MaskTextSpotter/datasets/icdar2015/test_iamges```
+
 ### Check the config file (configs/finetune.yaml) for some parameters.
 test dataset: ```TEST.DATASETS```; 
 
