@@ -10,7 +10,7 @@ This repo is inherited from [maskrcnn-benchmark](https://github.com/facebookrese
 - [x] Document for Installation
 - [x] Trained models
 - [x] Document for testing
-- [ ] Document for training
+- [x] Document for training
 - [ ] Demo
 - [ ] Evaluation code
 - [ ] Release the standalone recognition model
@@ -93,6 +93,17 @@ output directory: ```OUTPUT_DIR```
 
 
 ## Training
+Place all the training sets in ```MaskTextSpotter/datasets/``` and check ```DATASETS.TRAIN``` in the config file.
+### Pretrain
+Trained with SynthText
+
+```python3 -m torch.distributed.launch --nproc_per_node=8 tools/train_net.py --config-file configs/pretrain.yaml ```
+### Finetune
+Trained with a mixure of SynthText, icdar2013, icdar2015, scut-eng-char, and total-text
+
+check the initial weights in the config file.
+
+```python3 -m torch.distributed.launch --nproc_per_node=8 tools/train_net.py --config-file configs/finetune.yaml ```
 
 ## Evaluation
 
