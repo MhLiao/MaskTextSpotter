@@ -1,5 +1,5 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
-import torch,ipdb
+import torch
 from shapely.geometry import box
 from shapely import affinity
 import numpy as np
@@ -146,7 +146,6 @@ class BoxList(object):
         self.size=(r_c[0]*2,r_c[1]*2)
         bbox = BoxList(boxes, self.size, mode="xyxy",use_char_ann=self.use_char_ann)
         for k, v in self.extra_fields.items():
-            #ipdb.set_trace()
             if k == 'masks':
                 v=masks
             else:

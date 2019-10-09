@@ -10,33 +10,34 @@ import tempfile
 import time
 
 import torch
+import torch.distributed as dist
 
 
 def get_world_size():
-    if not torch.distributed.deprecated.is_initialized():
+    if not dist.is_initialized():
         return 1
-    return torch.distributed.deprecated.get_world_size()
+    return dist.get_world_size()
 
 
 def is_main_process():
-    if not torch.distributed.deprecated.is_initialized():
+    if not dist.is_initialized():
         return True
-    return torch.distributed.deprecated.get_rank() == 0
+    return dist.get_rank() == 0
 
 def get_rank():
-    if not torch.distributed.deprecated.is_initialized():
+    if not dist.is_initialized():
         return 0
-    return torch.distributed.deprecated.get_rank()
+    return dist.get_rank()
 
 def synchronize():
     """
     Helper function to synchronize between multiple processes when
     using distributed training
     """
-    if not torch.distributed.deprecated.is_initialized():
+    if not dist.is_initialized():
         return
-    world_size = torch.distributed.deprecated.get_world_size()
-    rank = torch.distributed.deprecated.get_rank()
+    world_size = dist.get_world_size()
+    rank = dist.get_rank()
     if world_size == 1:
         return
 
@@ -45,7 +46,7 @@ def synchronize():
             tensor = torch.tensor(0, device="cuda")
         else:
             tensor = torch.tensor(1, device="cuda")
-        torch.distributed.deprecated.broadcast(tensor, r)
+        dist.broadcast(tensor, r)
         while tensor.item() == 1:
             time.sleep(1)
 
@@ -101,11 +102,11 @@ def scatter_gather(data):
     # each process will then serialize the data to the folder defined by
     # the main process, and then the main process reads all of the serialized
     # files and returns them in a list
-    if not torch.distributed.deprecated.is_initialized():
+    if not dist.is_initialized():
         return [data]
     synchronize()
     # get rank of the current process
-    rank = torch.distributed.deprecated.get_rank()
+    rank = dist.get_rank()
 
     # the data to communicate should be small
     data_to_communicate = torch.empty(256, dtype=torch.uint8, device="cuda")
@@ -117,7 +118,7 @@ def scatter_gather(data):
 
     synchronize()
     # the main process (rank=0) communicates the data to all processes
-    torch.distributed.deprecated.broadcast(data_to_communicate, 0)
+    dist.broadcast(data_to_communicate, 0)
 
     # get the data that was communicated
     tmp_dir = _decode(data_to_communicate)
@@ -133,7 +134,7 @@ def scatter_gather(data):
     # only the master process returns the data
     if rank == 0:
         data_list = []
-        world_size = torch.distributed.deprecated.get_world_size()
+        world_size = dist.get_world_size()
         for r in range(world_size):
             file_path = os.path.join(tmp_dir, file_template.format(r))
             d = torch.load(file_path)

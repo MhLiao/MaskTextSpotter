@@ -6,7 +6,7 @@ Simple dataset class that wraps a list of path names
 from PIL import Image, ImageDraw
 from PIL import ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
-import os,ipdb
+import os
 from maskrcnn_benchmark.structures.bounding_box import BoxList
 from maskrcnn_benchmark.structures.segmentation_mask import SegmentationMask, SegmentationCharMask, CharPolygons
 import numpy as np
@@ -28,7 +28,6 @@ class ScutDataset(object):
         img = Image.open(self.image_lists[item]).convert("RGB")
         width,height=img.size
         gt_path=os.path.join(self.gts_dir,im_name+'.txt')
-        #ipdb.set_trace()
         words,boxes,charsbbs,segmentations=self.load_gt_from_txt(gt_path,height,width)
         if words[0]=='':
             use_char_ann = False

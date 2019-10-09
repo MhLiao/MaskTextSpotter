@@ -8,7 +8,6 @@ from shapely.geometry import box, Polygon
 from shapely import affinity
 from PIL import Image
 import cv2
-import ipdb
 class Compose(object):
     def __init__(self, transforms):
         self.transforms = transforms
@@ -226,7 +225,6 @@ class RandomRotate(object):
 
             M = cv2.getRotationMatrix2D((r_width/2, r_height/2), delta, 1)
             im= cv2.warpAffine(im_padding, M, (r_width, r_height))
-            #ipdb.set_trace()
             im=Image.fromarray(im.astype(np.uint8))
             target=target.rotate(-delta,(r_width/2,r_height/2),start_h,start_w)
             return im, target

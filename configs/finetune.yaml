@@ -66,9 +66,9 @@ SOLVER:
   MAX_ITER: 300000
   IMS_PER_BATCH: 8
   RESUME: True
-OUTPUT_DIR: "./outputs/finetune_two_conv"
+OUTPUT_DIR: "./outputs/finetune"
 TEST:
-  VIS: False
+  VIS: True
   CHAR_THRESH: 192
   IMS_PER_BATCH: 1
 INPUT:

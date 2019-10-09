@@ -14,7 +14,7 @@ from ..structures.bounding_box import BoxList
 from ..utils.comm import is_main_process
 from ..utils.comm import scatter_gather
 from ..utils.comm import synchronize
-
+import torch.distributed as dist
 
 from maskrcnn_benchmark.modeling.roi_heads.mask_head.inference import Masker
 from maskrcnn_benchmark.structures.boxlist_ops import boxlist_iou
@@ -146,7 +146,10 @@ def mask2polygon(mask, box, im_size, threshold=0.5, output_folder=None):
 		poly_map = cv2.erode(poly_map,SE1) 
 		poly_map = cv2.dilate(poly_map,SE1);
 		poly_map = cv2.morphologyEx(poly_map,cv2.MORPH_CLOSE,SE1)
-		im2,contours,hierarchy = cv2.findContours((poly_map*255).astype(np.uint8), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
+		try:
+			 _, contours, _ = cv2.findContours((poly_map * 255).astype(np.uint8), cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
+		except:
+			contours, _ = cv2.findContours((poly_map * 255).astype(np.uint8), cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
 		if len(contours)==0:
 			print(contours)
 			print(len(contours))
@@ -297,11 +300,11 @@ def visualization(image, polygons, char_polygons, words, resize_ratio, colors):
 			draw.polygon(polygon, fill=color, outline=color)
 
 def prepare_results_for_evaluation(predictions, output_folder, model_name, vis=False):
-	results_dir = os.path.join(output_folder, model_name+'_results_debug')
+	results_dir = os.path.join(output_folder, model_name+'_results')
 	if not os.path.isdir(results_dir):
 		os.mkdir(results_dir)
 	if vis:
-		visu_dir = os.path.join(output_folder, model_name+'_visu_debug')
+		visu_dir = os.path.join(output_folder, model_name+'_visu')
 		if not os.path.isdir(visu_dir):
 			os.mkdir(visu_dir)
 	for image_path, prediction in predictions.items():
@@ -360,14 +363,14 @@ def inference(
 
 	# convert to a torch.device for efficiency
 	model_name = model_name.split('.')[0] + '_' + str(cfg.INPUT.MIN_SIZE_TEST)
-	predictions_path = os.path.join(output_folder, model_name + '_predictions_debug.pth')
+	predictions_path = os.path.join(output_folder, model_name + '_predictions.pth')
 	if os.path.isfile(predictions_path):
 		predictions = torch.load(predictions_path)
 	else:
 		device = torch.device(device)
 		num_devices = (
-			torch.distributed.deprecated.get_world_size()
-			if torch.distributed.deprecated.is_initialized()
+			dist.get_world_size()
+			if dist.is_initialized()
 			else 1
 		)
 		logger = logging.getLogger("maskrcnn_benchmark.inference")

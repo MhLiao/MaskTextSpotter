@@ -3,7 +3,7 @@ import torch
 
 import pycocotools.mask as mask_utils
 import numpy as np
-import cv2,ipdb
+import cv2
 from PIL import Image
 from maskrcnn_benchmark.utils.chars import num2char, char2num
 from shapely.geometry import Polygon
@@ -460,7 +460,6 @@ class SegmentationCharMask(object):
 
     def crop(self, box,keep_ind):
         cropped=[]
-        #ipdb.set_trace()
         w, h = box[2] - box[0], box[3] - box[1]
         if keep_ind is not None:
             self.chars_boxes=np.array(self.chars_boxes)

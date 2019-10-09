@@ -4,7 +4,7 @@ Simple dataset class that wraps a list of path names
 """
 
 from PIL import Image, ImageDraw
-import os,ipdb
+import os
 from maskrcnn_benchmark.structures.bounding_box import BoxList
 from maskrcnn_benchmark.structures.segmentation_mask import SegmentationMask, SegmentationCharMask, CharPolygons
 import numpy as np
@@ -62,7 +62,6 @@ class IcdarDataset(object):
                 char =new_im
             new=Image.blend(char,mask,0.5)
             img_draw = ImageDraw.Draw(new)
-            #ipdb.set_trace()
             for box in target.bbox.numpy():
                 box=list(box)
                 box = box[:2]+[box[2],box[1]]+box[2:] + [box[0],box[3]] + box[:2]

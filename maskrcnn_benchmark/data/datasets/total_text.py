@@ -4,7 +4,7 @@ Simple dataset class that wraps a list of path names
 """
 
 from PIL import Image, ImageDraw
-import os,ipdb
+import os
 from maskrcnn_benchmark.structures.bounding_box import BoxList
 from maskrcnn_benchmark.structures.segmentation_mask import SegmentationMask, SegmentationCharMask, CharPolygons
 import numpy as np
@@ -27,7 +27,6 @@ class TotaltextDataset(object):
         width,height=img.size
         if self.gts_dir is not None:
             gt_path=os.path.join(self.gts_dir,im_name+'.txt')
-            #ipdb.set_trace()
             words,boxes,charsbbs,segmentations=self.load_gt_from_txt(gt_path,height,width)
             if words[0]=='':
                 use_char_ann = False

@@ -43,7 +43,10 @@ def seg2text(gray, mask, seg, box, threshold=192):
 	# gray = cv2.dilate(gray,SE1)
 	# gray = cv2.morphologyEx(gray,cv2.MORPH_CLOSE,SE1)
 	ret, thresh = cv2.threshold(gray, threshold, 255, cv2.THRESH_BINARY)
-	im2, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+	try:
+		_, contours, _ = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+	except:
+		contours, _ = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 	chars = []
 	scores = []
 	char_polygons = []

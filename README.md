@@ -8,8 +8,9 @@ This repo is inherited from [maskrcnn-benchmark](https://github.com/facebookrese
 
 - [x] Release code
 - [x] Document for Installation
-- [ ] Document for training and testing
-- [ ] Trained models
+- [x] Trained models
+- [ ] Document for testing
+- [ ] Document for training
 - [ ] Demo
 - [ ] Evaluation code
 - [ ] Release the standalone recognition model
@@ -17,14 +18,14 @@ This repo is inherited from [maskrcnn-benchmark](https://github.com/facebookrese
 ## Installation
 
 ### Requirements:
-- PyTorch >= 1.0
+- PyTorch >= 1.0 (1.2 is suggested)
 - torchvision from master
 - cocoapi
 - yacs
 - matplotlib
-- GCC >= 4.9
+- GCC >= 4.9 (important)
 - OpenCV
-- CUDA >= 9.0
+- CUDA >= 9.0 (10.0 is suggested)
 
 
 ### Option 1: Step-by-step installation
@@ -41,10 +42,10 @@ This repo is inherited from [maskrcnn-benchmark](https://github.com/facebookrese
   conda install ipython pip
 
   # python dependencies
-  pip install ninja yacs cython matplotlib tqdm opencv-python
+  pip install ninja yacs cython matplotlib tqdm opencv-python shapely scipy tensorboardX
 
   # install PyTorch
-  conda install -c pytorch pytorch-nightly torchvision cudatoolkit=9.0
+  conda install pytorch torchvision cudatoolkit=10.0 -c pytorch
 
   export INSTALL_DIR=$PWD
 
@@ -73,8 +74,10 @@ This repo is inherited from [maskrcnn-benchmark](https://github.com/facebookrese
 ```
 
 ## Models
+Download Trained [model](https://drive.google.com/open?id=1pPRS7qS_K1keXjSye0kksqhvoyD0SARz)
 
 ## Testing
+
 
 ## Training
 
