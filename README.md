@@ -74,10 +74,12 @@ This repo is inherited from [maskrcnn-benchmark](https://github.com/facebookrese
 ## Models
 Download Trained [model](https://drive.google.com/open?id=1pPRS7qS_K1keXjSye0kksqhvoyD0SARz)
 
+## Datasets
+Download the ICDAR2013([Google Drive](https://drive.google.com/open?id=1sptDnAomQHFVZbjvnWt2uBvyeJ-gEl-A), [BaiduYun](https://pan.baidu.com/s/18W2aFe_qOH8YQUDg4OMZdw)) and ICDAR2015([Google Drive](https://drive.google.com/open?id=1HZ4Pbx6TM9cXO3gDyV04A4Gn9fTf2b5X), [BaiduYun](https://pan.baidu.com/s/16GzPPzC5kXpdgOB_76A3cA)) as examples.
+The root of the dataset directory should be ```MaskTextSpotter/datasets/```.
+
 ## Testing
 ### Prepar dataset
-The root of the dataset directory should be ```MaskTextSpotter/datasets```. The format of the dataset can be find [here](https://github.com/lvpengyuan/masktextspotter.caffe2#datasets). 
-
 An example of the path of test images: ```MaskTextSpotter/datasets/icdar2015/test_iamges```
 
 ### Check the config file (configs/finetune.yaml) for some parameters.
