@@ -55,8 +55,7 @@ class DatasetCatalog(object):
             "total_text/train_gts",
         ),
         "total_text_test": (
-            # "total_text/test_images",
-            "total_text/demo_images",
+            "total_text/test_images",
             # "total_text/test_gts",
         ),
         "scut-eng-char_train":(
