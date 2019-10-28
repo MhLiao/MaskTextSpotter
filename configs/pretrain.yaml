@@ -1,7 +1,7 @@
 MODEL:
   META_ARCHITECTURE: "GeneralizedRCNN"
-  WEIGHT: "catalog://ImageNetPretrained/MSRA/R-50"
-  # WEIGHT: "./outputs/synth_pretrain_shrink++/model_0270000.pth"
+  # WEIGHT: "catalog://ImageNetPretrained/MSRA/R-50"
+  WEIGHT: "./outputs/finetune/model_finetune.pth"
   BACKBONE:
     CONV_BODY: "R-50-FPN"
     OUT_CHANNELS: 256
@@ -16,6 +16,7 @@ MODEL:
     USE_FPN: True
     BATCH_SIZE_PER_IMAGE: 512
   ROI_BOX_HEAD:
+    POOLER_RESOLUTION: 7
     POOLER_SCALES: (0.25, 0.125, 0.0625, 0.03125)
     POOLER_SAMPLING_RATIO: 2
     FEATURE_EXTRACTOR: "FPN2MLPFeatureExtractor"
