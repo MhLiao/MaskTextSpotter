@@ -132,7 +132,7 @@ class IcdarDataset(object):
             return words, np.zeros((1, 5), dtype=np.float32), [[charbbs]], [[np.zeros((8,), dtype=np.float32)]]
 
     def line2boxes(self, line):
-        parts = line.strip().split(',')
+        parts = line.strip().split(',', 8)
         if '\xef\xbb\xbf' in parts[0]:
             parts[0] = parts[0][3:]
         if '\ufeff' in parts[0]:
