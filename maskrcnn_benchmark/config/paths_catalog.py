@@ -3,6 +3,11 @@
 
 import os
 
+def add_gt_path(data_dir, attrs):
+    if len(attrs)>1:
+        return os.path.join(data_dir,attrs[1])
+    else:
+        return None
 
 class DatasetCatalog(object):
     DATA_DIR = "datasets"
@@ -84,7 +89,7 @@ class DatasetCatalog(object):
             args=dict(
                 use_charann=True,
                 imgs_dir=os.path.join(data_dir,attrs[0]),
-                gts_dir=os.path.join(data_dir,attrs[1]),
+                gts_dir=add_gt_path(data_dir,attrs),
             )
             return dict(
                 args=args,
@@ -113,7 +118,7 @@ class DatasetCatalog(object):
                 use_charann=True,
                 list_file_path=os.path.join(data_dir, 'synthtext/train_list.txt'),
                 imgs_dir=os.path.join(data_dir,attrs[0]),
-                gts_dir=os.path.join(data_dir,attrs[1]),
+                gts_dir=add_gt_path(data_dir,attrs),
             )
             return dict(
                 args=args,
