@@ -11,21 +11,22 @@ This repo is inherited from [maskrcnn-benchmark](https://github.com/facebookrese
 - [x] Trained models
 - [x] Document for testing
 - [x] Document for training
-- [ ] Demo
+- [x] Demo script
 - [ ] Evaluation code
 - [ ] Release the standalone recognition model
 
 ## Installation
 
 ### Requirements:
-- PyTorch >= 1.0 (1.2 is suggested)
+- Python3 (Python3.7 is recommended)
+- PyTorch >= 1.0 (1.2 is recommended)
 - torchvision from master
 - cocoapi
 - yacs
 - matplotlib
-- GCC >= 4.9 (important)
+- GCC >= 4.9 (This is very important!)
 - OpenCV
-- CUDA >= 9.0 (10.0 is suggested)
+- CUDA >= 9.0 (10.0 is recommended)
 
 
 ```bash
