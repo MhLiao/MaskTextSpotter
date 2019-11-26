@@ -80,7 +80,13 @@ You can run a demo script for a single image inference by ```python tools/demo.p
 
 ## Datasets
 Download the ICDAR2013([Google Drive](https://drive.google.com/open?id=1sptDnAomQHFVZbjvnWt2uBvyeJ-gEl-A), [BaiduYun](https://pan.baidu.com/s/18W2aFe_qOH8YQUDg4OMZdw)) and ICDAR2015([Google Drive](https://drive.google.com/open?id=1HZ4Pbx6TM9cXO3gDyV04A4Gn9fTf2b5X), [BaiduYun](https://pan.baidu.com/s/16GzPPzC5kXpdgOB_76A3cA)) as examples.
+
+The SCUT dataset used for training can be downloaded [here](https://drive.google.com/open?id=1BpE2GEFF7Ay7jPqgaeHxMmlXvM-1Es5_).
+
+The converted labels of Total-Text dataset can be downloaded [here](https://1drv.ms/u/s!ArsnjfK83FbXgcpti8Zq9jSzhoQrqw?e=99fukk).
+
 The converted labels of SynthText can be downloaded [here](https://1drv.ms/u/s!ArsnjfK83FbXgb5vgOOVPYywgCWuQw?e=UPuNTa).
+
 The root of the dataset directory should be ```MaskTextSpotter/datasets/```.
 
 ## Testing
