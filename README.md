@@ -12,7 +12,7 @@ This repo is inherited from [maskrcnn-benchmark](https://github.com/facebookrese
 - [x] Document for testing
 - [x] Document for training
 - [x] Demo script
-- [ ] Evaluation code
+- [x] Evaluation
 - [ ] Release the standalone recognition model
 
 ## Installation
@@ -119,6 +119,18 @@ check the initial weights in the config file.
 ```python3 -m torch.distributed.launch --nproc_per_node=8 tools/train_net.py --config-file configs/finetune.yaml ```
 
 ## Evaluation
+### Evaluation for ICDAR 2015 dataset
+download the [lexicons](https://drive.google.com/open?id=1u3NlpIZkE4dYmrcWo0qzU_q7ra5jvDhD) and place them like ```evaluation/lexicons/ic15/```
+
+```
+cd evaluation/icdar2015/e2e/
+# edit "result_dir" in script.py
+python script.py
+```
+
+### Evaluation for Total-Text dataset (ToDo)
+
+
 
 ## Citing the related works
 
